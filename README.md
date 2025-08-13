@@ -110,3 +110,32 @@ Cuando la heurística es admisible y consistente, A* garantiza encontrar la solu
 Con los datos proporcionados, la ruta óptima de Arad a Bucharest es: Arad → Sibiu → Rimnicu Vilcea → Pitesti → Bucharest.
 
 Con un costo total de: 140 + 80 + 97 + 101 = 418 km.
+
+
+# Punto 2
+## Problemas identificados
+
+### 1. HEURÍSTICA INADECUADA
+- La distancia Manhattan no considera los costos reales del terreno.
+- Puede subestimar el costo real en terrenos complejos.
+- Ejemplo: un camino directo a través de montañas puede parecer mejor, pero ser mucho más costoso que un rodeo por terreno normal.
+
+### 2. EXPLORACIÓN INEFICIENTE
+- El algoritmo puede explorar caminos caros innecesariamente.
+- No hay memoria de terrenos ya evaluados con costos altos.
+
+### 3. ESCALABILIDAD
+- En laberintos grandes (como el de 12x9), el tiempo aumenta significativamente.
+- La memoria usada crece con el número de posiciones alcanzables.
+
+### 4. MÚLTIPLES SALIDAS
+- El algoritmo original solo encuentra **una** salida.
+- Para múltiples salidas, hay que ejecutar el algoritmo varias veces.
+- No hay optimización para encontrar la mejor salida de forma eficiente.
+
+---
+
+##  Propuestas de mejora
+- Implementar heurísticas más sofisticadas que consideren tipos de terreno.
+- Usar algoritmos bidireccionales para múltiples salidas.
+- Implementar poda más agresiva para reducir el espacio de búsqueda.
