@@ -1,4 +1,4 @@
-# Actividad 2 - Análisis de Dataset de Enfermedades Cardíacas con Random Forest (RF)
+# Actividad 2 - Análisis de Dataset de Enfermedades Cardíacas con Random Forest (RF), Redes Neuronales y Xgboost
 
 ## Descripción del Dataset
 
