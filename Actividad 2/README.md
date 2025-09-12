@@ -1,12 +1,12 @@
-# Actividad 2 - Análisis de Dataset de Enfermedades Cardíacas con SVM
+# Actividad 2 - Análisis de Dataset de Enfermedades Cardíacas con Random Forest (RF)
 
 ## Descripción del Dataset
 
-Este proyecto utiliza el dataset "Heart Disease Dataset 3k Rows" de Kaggle para implementar un modelo de Support Vector Machine (SVM) que predice la presencia de enfermedades cardíacas.
+Este proyecto utiliza el dataset "Heart Disease Dataset 3k Rows" de Kaggle para implementar un modelo de Random Forest (RF) que predice la presencia de enfermedades cardíacas.
 
 **Fuente del Dataset:** https://www.kaggle.com/datasets/pratyushpuri/heart-disease-dataset-3k-rows-python-code-2025
 
-## Estructura del Dataset
+# 1. Estructura del Dataset
 
 El dataset contiene las siguientes columnas con sus respectivos significados:
 
@@ -62,18 +62,39 @@ El dataset contiene las siguientes columnas con sus respectivos significados:
 6. Evaluación del rendimiento
 
 ## Archivos del Proyecto:
-- `svm.py`: Script principal con la implementación del modelo
+- `random_forest.py`: Script principal con la implementación del modelo
 - `heart-disease-dataset-3k-rows-python-code-2025/`: Directorio con los datos descargados
   - `heart_disease_dataset.csv`: Dataset principal
   - `heart_disease_dataset.json`: Datos en formato JSON
   - `heart_disease_dataset.xlsx`: Datos en formato Excel
 
 ## Objetivo del Modelo:
-Predecir la presencia de enfermedades cardíacas (variable `heart_disease`) basándose en las características clínicas y demográficas del paciente, utilizando un algoritmo de Support Vector Machine.
+Predecir la presencia de enfermedades cardíacas (variable `heart_disease`) basándose en las características clínicas y demográficas del paciente, utilizando un algoritmo de Random Forest (RF).
 
 ## Resultados Esperados:
-El modelo SVM permitirá clasificar a los pacientes en dos categorías:
+El modelo RF permitirá clasificar a los pacientes en dos categorías:
 - **0**: Sin enfermedad cardíaca
 - **1**: Con enfermedad cardíaca
 
 Esto puede ser útil para el diagnóstico temprano y la prevención de enfermedades cardiovasculares.
+
+# 2. Preprocesamiento realizado
+
+## 2.1. Preprocesamiento Random Forest
+### Escalado y División de Train/Test
+
+**Escalado:** La técnica nos gustó y nos pareció interesante por la posibilidad de transformar el valor de X, y al estandarizar los datos vimos que la predicción base un poco más alta que la final.
+
+**División de Train/Test:** Decidimos hacer la división train y test, ya que fue el mejor camino que encontramos para que fuese eficiente el modelo, a la par que vimos que el test_size al cambiarlo nos hacía cambiar un poco la exactitud, y al ver que podía cambiar decidimos implementarlo.
+
+# 3. Entrenamiento de los tres modelos con sus parámetros
+
+### 3.1. Entrenamiento del modelo Random Forest
+
+Incluimos el número de árboles necesarios simulando los estimadores de los datos en la clasificación, ya que entre más árboles, más exactitud se podía encontrar. La profundidad máxima y los demás factores que escogimos nos da mucha más exactitud, a la vez que tener la semilla (random_state) nos da la seguridad que tendremos los mismos resultados cada vez que se ejecute el código, y no tendremos variabilidad ni inconsistencia en la exactitud del modelo. Establecemos un mínimo para que no se sobrepasen los datos y se muestren realmente los datos que están en el csv, y no otros no existentes.
+
+# 4. Evaluación de Resultados
+
+## 4.1. Modelo Random Forest
+
+Usamos para los resultados del modelo las métricas de rendimiento, porque tuvimos mayor detalle de los datos, los datos de importancia según los porcentajes, y mostramos sobre todo la eficiencia base y final después de la optimización que quisimos hacer, y a través de la métrica vimos si pudo optimizarse o no. Analizando la data como archivo csv vimos que es dificil entender sin contexto previo los 0 y 1s que están en la data, sin embargo, al principio de este documento se explica, por lo que la métrica nos hace entender si es mujer u hombre la persona, si tiene o no diabetes, si fuma o no, entre otras.
