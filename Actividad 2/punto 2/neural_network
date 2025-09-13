@@ -50,13 +50,12 @@ x_categorical = X[categorical_features]
 # 4. Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-# Calcular pesos de clase
-# ========================
+# set weights 
 classes = np.unique(y_train)
 class_weights = compute_class_weight(class_weight='balanced', classes=classes, y=y_train)
 weights = {k: v for k, v in zip(classes, class_weights)}
 
-# Crear array de pesos por muestra según y_train
+# Create array of weights with the sample
 sample_weights = np.array([weights[i] for i in y_train])
 
 
@@ -102,4 +101,5 @@ sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=["No sick", "sick
 plt.xlabel("Predicted")
 plt.ylabel("Real")
 plt.title("confusion matrix")
+
 plt.show()
